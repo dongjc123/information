@@ -1,0 +1,394 @@
+<div id="home">
+	<!-- home页面
+	<div class="switch">
+      <input type="checkbox"/>
+    </div> -->
+    <div class="outerDiv">
+    	<div class="row">
+	    	<div class="col-sm-3">
+	    		<div class="totolDiv bg-white">
+	    			<div class="iconDiv bg-green">
+	    				<i class="iconfont icon-yun"></i>
+	    			</div>
+	    			<div class="numDiv">
+	    				<span>99.9%</span>
+	    				<small>SERVER</small>
+	    			</div>
+	    		</div>
+	    		<div class="totolDiv bg-white">
+	    			<div class="iconDiv bg-green">
+	    				<i class="iconfont icon-yun"></i>
+	    			</div>
+	    			<div class="numDiv">
+	    				<span>99.9%</span>
+	    				<small>SERVER</small>
+	    			</div>
+	    		</div>
+	    		<div class="totolDiv bg-white">
+	    			<div class="iconDiv bg-green">
+	    				<i class="iconfont icon-yun"></i>
+	    			</div>
+	    			<div class="numDiv">
+	    				<span>99.9%</span>
+	    				<small>SERVER</small>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-6">
+	    		<div class="visDiv">
+	    			<div id="visContainer"></div>
+	    			<div class="numDiv">
+	    				<span>14.85%</span>
+	    				<small>More Visitors</small>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<div class="uptimeDiv">
+	    			<div id="uptimeContainer"></div>
+	    			<div class="numDiv">
+	    				<span>14.85%</span>
+	    				<small>More Visitors</small>
+	    			</div>
+	    		</div>
+	    		<div class="salesDiv">
+	    			<div id="salesContainer"></div>
+	    			<div class="numDiv">
+	    				<span>14.85%</span>
+	    				<small>More Visitors</small>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-6">
+	    		<div class="pagDiv">
+	    			<div id="pagContainer"></div>
+	    			<div class="numDiv">
+	    				<span>14.85%</span>
+	    				<small>More Visitors</small>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-sm-6">
+	    		<div class="mvDiv">
+	    			<div id="dddContainer"></div>
+	    			<div class="numDiv">
+	    				<span>14.85%</span>
+	    				<small>More Visitors</small>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+    </div>
+    
+
+
+</div>
+<script>
+	$(function(){
+		drawVis();
+		drawUptime();
+		drawSales();
+		drawPag();
+		drawDdd();
+		function drawDdd(){
+			var chart = Highcharts.chart('dddContainer', {
+				chart: {
+					zoomType: 'xy'
+				},
+				title: {
+					text: ''
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#875443'],
+				subtitle: {
+					text: '',
+					dataLabels: {
+						enabled: false,
+					},
+				},
+				
+				xAxis: [{
+					categories: [],
+					crosshair:false
+				}],
+				yAxis: [{ // Primary yAxis
+					labels: {
+						format: '{value}°C',
+					},
+				}, { // Secondary yAxis
+					title: {
+						text: '',
+					},
+					opposite: true
+				}],
+				tooltip: {
+					shared: false
+				},
+				legend: {
+					x: 120,
+					y: 100,
+					floating: true,
+				},
+				series: [{
+					name: '',
+					type: 'column',
+					yAxis: 1,
+					data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+				}, {
+					name: '',
+					type: 'spline',
+					data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+				}]
+			});
+		}
+		function drawPag(){
+			var chart = Highcharts.chart('pagContainer', {
+				chart: {
+					type: 'pie',
+					options3d: {
+						enabled: false,
+						alpha: 45
+					}
+				},
+				credits:{
+					enabled:false,
+				},
+				title: {
+					text: ''
+				},
+				subtitle: {
+					text: ''
+				},
+				plotOptions: {
+					pie: {
+						innerSize: 80,
+						depth: 45,
+						dataLabels: {
+							enabled: false,
+						},
+					}
+				},
+				series: [{
+					name: '货物金额',
+					data: [
+						['香蕉', 8],
+						['猕猴桃', 3],
+						['桃子', 1],
+						['橘子', 6],
+						['苹果', 8],
+						['梨', 4],
+						['柑橘', 4],
+						['橙子', 1],
+						['葡萄 (串)', 1]
+					]
+				}]
+			});
+		}
+		function drawSales(){
+			var chart = Highcharts.chart('salesContainer', {
+				chart: {
+					margin : [0, 0 , 0, 100]
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#862eb7','red','green','blue','link','#666666'],
+				title: {
+					floating:true,
+					text: ''
+				},
+				tooltip: {
+					pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+				},
+				plotOptions: {
+					pie: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: false,
+						},
+					}
+				},
+				series: [{
+					type: 'pie',
+					innerSize: '60%',
+					name: 'Sales',
+					data: [
+						['Firefox',45.0],
+						['IE',26.8],
+						['Chrome',12.8],
+						['Safari',8.5],
+						['Opera',6.2],
+						['其他',0.7]
+					]
+				}]
+			});
+		}
+		function drawUptime(){
+			var chart = Highcharts.chart('uptimeContainer', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#862eb7','red','green','blue','link','#666666','#862eb7','red','green','blue','link','#666666'],
+				title: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+				},
+				series: [{
+					type: 'column',
+					colorByPoint: true,
+					data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+					showInLegend: false
+				}]
+			});
+		}
+		function drawVis(){
+			var chart = Highcharts.chart('visContainer', {
+				chart:{
+					margin:[0,0,0,0],
+				},
+				credits:{
+					enabled:false,
+				},
+				colors:['#66bb0d','#ccc'],
+				title: {
+					text: ''
+				},
+				subtitle: {
+					text: ''
+				},
+				xAxis: {
+					visible:false,
+				},
+				yAxis: {
+					visible:false,
+					title: {
+						text: ''
+					}
+				},
+				legend: {
+					floating:true,
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'top'
+				},
+				plotOptions: {
+					series: {
+						label: {
+							connectorAllowed: false
+						},
+						pointStart: 2010
+					}
+				},
+				series: [{
+					name: 'Page',
+					data: [33,44,55,51,64,50,44,45,53,34,46,54,39]
+				}, {
+					name: 'Vistitors',
+					data: [21,23,34,36,24,39,33,24,25,23,34,45,19]
+				}],
+			});
+		}
+	});
+</script>
+<style>
+	.outerDiv{
+		width: 95%;
+		margin: 10px auto;
+	}
+	.bg-white{
+		background-color: white;
+	}
+	.bg-green{
+		background-color: #66bb0d;
+	}
+	.totolDiv{
+		overflow: hidden;
+		padding: 10px;
+		margin-top: 15px;
+	}
+	.totolDiv .iconDiv,.numDiv{
+		float: left;
+	}
+	.iconDiv{
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+		text-align: center;;
+	}
+	.iconDiv i{
+		line-height: 50px;
+		color: white;
+		font-size: 28px;
+	}
+	.totolDiv .numDiv{
+		margin-left: 10px;
+		padding-top: 5px;
+	}
+	.numDiv span{
+		font-size: 24px;
+		line-height: 24px;
+	}
+	.numDiv small{
+		display: block;
+	}
+	#visContainer{
+		height: 245px;
+	}
+	.visDiv,.uptimeDiv,.salesDiv{
+		position: relative;
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+	.visDiv .numDiv,.uptimeDiv .numDiv,.salesDiv .numDiv,.pagDiv .numDiv,.salesDiv .numDiv,.dddContainer .numDiv{
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+	.visDiv span{
+		color: #66bb0d;
+	}
+	#uptimeContainer,#salesContainer{
+		height: 117.5px;
+		background-color: #fff;
+	}
+	.pagDiv{
+		padding-top: 15px;
+	}
+	.pagDiv .numDiv{
+		margin-left: 10px;
+		padding-top: 10px;
+	}
+	.pagDiv span,.mvDiv span,.vmDiv span{
+		color: #66bb0d;
+		font-size: 24px;
+		line-height: 24px;
+	}
+	.pagDiv small{
+		display: block;
+	}
+	.pagDiv span,.mvDiv span,.vmDiv span{
+		color: #66bb0d;
+		font-size: 24px;
+		line-height: 24px;
+	}
+	.pagDiv small{
+		display: block;
+	}
+	.mvDiv{
+		margin-left: 15px;
+		margin-top: 15px;
+		height: 100px;
+	}
+	
+</style>
